@@ -1,0 +1,41 @@
+body {
+    font-size: 18px;
+    padding: 120px;
+    justify-content: center;
+    background-color: #e6e2e2;
+    text-align: center;
+}
+
+div {
+    display: inline-block;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+}
+
+h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input {
+    font-size: 16px;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+button {
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px; 
+    width: 100%;
+}
