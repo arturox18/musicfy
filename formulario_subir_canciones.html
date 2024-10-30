@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo_subir_canciones.css">
+    <title>SUBIR CANCIONES</title>
+    
+</head>
+<body>
+    <div class="contenedor">
+        <h2>SUBIR CANCIONES</h2>
+
+        <form action="subir_canciones.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre de la cancion</label>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            </div>
+
+            <div class="botom">
+                <label for="genero">Género Musical</label>
+                <input type="text" name="genero" placeholder="Género" required>
+            </div>
+            
+            <div class="botom">
+                <label for="duracion">Duración</label>
+                <input type="text" name="duracion" placeholder="Duración (min)" required>
+            </div>
+
+            <div class="botom">
+                <label for="audio">Canción</label>
+                <input type="file" name="audio" accept="audio/*" required>
+            </div>
+
+            <button type="submit">Subir Canción</button>
+        </form>
+    </div>
+</body>
+</html>
