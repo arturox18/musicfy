@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #880ECE;
@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-/* Contenedor del formulario */
+
 .login-container {
     background-color: white;
     padding: 40px;
