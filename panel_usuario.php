@@ -1,4 +1,7 @@
-<div class="user-profile">
+
+<link rel="stylesheet" href="diseño.css">
+
+<div class="login-container">
   <h2>Perfil de usuario</h2>
   
   <div class="profile-photo">

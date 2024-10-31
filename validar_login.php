@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario_id = $row['pk_usuario']; // Almacenar el ID del usuario
             session_start();
             $_SESSION['pk_usuario'] = $usuario_id; // Guardar el ID del usuario en la sesión
-            header("Location: formulario_album.html"); // Redirigir a la página deseada
+            header("Location: index2.php"); // Redirigir a la página deseada
             exit(); // Detener la ejecución del script
         } else {
             echo "Usuario o contraseña incorrectos";
@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Usuario o contraseña incorrectos";
     }
-
-
+    
 $conn->close();
 ?>

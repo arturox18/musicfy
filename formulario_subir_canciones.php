@@ -5,7 +5,7 @@ session_start(); // Iniciar sesión
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "musica2";
+$dbname = "musica";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

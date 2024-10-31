@@ -3,8 +3,8 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "musica2";
- 
+$dbname = "musica";
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
@@ -24,15 +24,20 @@ if ($conn->query($sql_persona) === TRUE) {
     $correo = $conn->real_escape_string($_POST['correo']);
     $pw = $conn->real_escape_string($_POST['pw']);
 
-    $sql_usuario = "INSERT INTO usuario (nom_usuario, correo, pw, fk_persona) VALUES ('$nom_usuario', '$correo', '$pw', '$persona_id')";
+    $estatus = isset($_POST['estatus']) ? $_POST['estatus'] : 1;
 
+    $sql_usuario = "INSERT INTO usuario (nom_usuario, correo, pw, estatus, fk_persona) VALUES ('$nom_usuario', '$correo', '$pw', '$estatus', '$persona_id')";
+   
     if ($conn->query($sql_usuario) === TRUE) {
         echo "Usuario registrado correctamente.";
+        
+        header("Location: inicio_sesion.html");
+        exit(); // Asegura que el script termine aquí
     } else {
         echo "Error al registrar en la tabla usuario: " . $conn->error;
     }
 } else {
     echo "Error al registrar en la tabla persona: " . $conn->error;
 }
+
 $conn->close();
-?>

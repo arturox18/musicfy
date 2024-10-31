@@ -120,8 +120,10 @@
 
     <!-- Barra de navegación -->
     <div class="navbar">
-        <div class="icono"></div>
-            <a>Edgar G</a>
+        <div class="icono">
+            <img src="logo.png">
+        </div>
+            <a>Usuario</a>
         <div class="busqueda">
             <input type="text" placeholder="Buscar...">
         </div>

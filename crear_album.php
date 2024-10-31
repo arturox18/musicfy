@@ -1,7 +1,7 @@
 <?php
 session_start(); // Iniciar la sesión al comienzo del archivo
 
-$conexion = new mysqli("localhost", "root", "", "musica2");
+$conexion = new mysqli("localhost", "root", "", "musica");
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);

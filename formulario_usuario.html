@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-
+    <link rel="stylesheet" href="diseño.css">
 </head>
 
 <body>
-    <div>
-        <h2>Registro de cuenta</h2>
+    <div class="login-container">
+        <h2>Registra una cuenta</h2>
         <form action="formulario_usuario.php" method="POST">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
@@ -32,12 +31,12 @@
             <input type="text" id="nom_usuario" name="nom_usuario" required><br>
 
             <label for="correo">Correo electrónico:</label>
-            <input type="correo" id="correo" name="correo" required><br>
+            <input type="email" id="correo" name="correo" required><br>
 
             <label for="pw">Contraseña:</label>
             <input type="password" id="pw" name="pw" required><br>
 
-            <button type="submit">Registrar</button>
+            <button type="submit">Registrarse</button>
         </form>
     </div>
 </body>

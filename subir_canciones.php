@@ -2,7 +2,7 @@
 session_start();
 
 // Conectar a la base de datos
-$conexion = new mysqli("localhost", "root", "", "musica2");
+$conexion = new mysqli("localhost", "root", "", "musica");
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
