@@ -1,6 +1,8 @@
 <?php 
 include 'conexion.php'; // Asegúrate de que esta línea está al inicio del archivo
-
+if (!class_exists('conexion')) {
+    die("La clase 'conexion' no se pudo encontrar.");
+}
 class usuario {
     private $conexion;
 
