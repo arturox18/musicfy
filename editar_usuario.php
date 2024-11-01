@@ -37,8 +37,8 @@ $datos = mysqli_fetch_assoc($datos_usuario);
 
         <input value="<?= $datos["pk_usuario"] ?>" type="hidden" name="pk_usuario">
         
-        <input type="submit" value="Guardar">
-        <a href="panel_usuario.php">Cancelar</a>
+        <button id= "boton" type="submit"> Guardar </button>
+        <button id= "boton"  href="panel_usuario.php">Cancelar</button>
     </form>
     </div>
 </body>
