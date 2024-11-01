@@ -1,12 +1,13 @@
 <?php 
-include 'conexion.php'; 
-class usuario
-{
-    function __construct()
-    {
-            require_once("conexion.php");
-        $this->conexion=new conexion();
+include 'conexion.php'; // Asegúrate de que esta línea está al inicio del archivo
+
+class usuario {
+    private $conexion;
+
+    public function __construct() {
+        $this->conexion = new conexion(); // Crea una nueva instancia de la clase conexion
     }
+
     public function actualizar($nombre_usuario, $correo, $contraseña, $descripcion, $idusuario, $foto) {
         // Si hay una foto nueva, inclúyela en la actualización
         $foto_query = $foto ? ", foto = '$foto'" : "";
