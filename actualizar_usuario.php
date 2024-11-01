@@ -18,4 +18,5 @@ if (!empty($foto)) {
 
 $respuesta = $usuario->actualizar($nombre_usuario, $correo, $contraseña, $descripcion, $idusuario, $foto);
 echo $respuesta;
+header("Location: panel_usuario.php");
 ?>
