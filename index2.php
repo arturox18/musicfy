@@ -120,15 +120,15 @@
 
     <!-- Barra de navegación -->
     <div class="navbar">
-        <div class="icono">
-            <img src="logo.png">
-        </div>
-            <a>Usuario</a>
-        <div class="busqueda">
-            <input type="text" placeholder="Buscar...">
-        </div>
-        <a href="#" class="minijuego">Minijuego</a>
+    <div class="icono">
+        <img src="logo.png">
     </div>
+    <a href="editar_usuario.php?pk_usuario=<?= $id_usuario ?>">Usuario</a> <!-- $id_usuario es una variable en PHP con el ID del usuario -->
+    <div class="busqueda">
+        <input type="text" placeholder="Buscar...">
+    </div>
+    <a href="#" class="minijuego">Minijuego</a>
+</div>
 
     <!-- Barra lateral -->
     <div class="sidebar">
