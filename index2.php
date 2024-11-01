@@ -134,8 +134,8 @@ $id_usuario = $_SESSION['pk_usuario']; // Obtener el ID de usuario desde la sesi
     <div class="icono">
         <img src="logo.png">
     </div>
-    <button href="panel_usuario.php?pk_usuario=<?= $id_usuario ?>">usuario</button>
-     <!-- $id_usuario es una variable en PHP con el ID del usuario -->
+    <a href="panel_usuario.php?pk_usuario=<?= $id_usuario ?>">Usuario</a>
+   
     <div class="busqueda">
         <input type="text" placeholder="Buscar...">
     </div>
