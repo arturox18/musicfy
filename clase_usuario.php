@@ -1,0 +1,25 @@
+<?php 
+class usuario
+{
+    function __construct()
+    {
+            require_once("conexion.php");
+        $this->conexion=new conexion();
+    }
+    public function actualizar($nombre_usuario, $correo, $contraseña, $descripcion, $idusuario, $foto) {
+        // Si hay una foto nueva, inclúyela en la actualización
+        $foto_query = $foto ? ", foto = '$foto'" : "";
+        
+        $query = "UPDATE usuario SET 
+                    nom_usuario = '$nombre_usuario',
+                    correo = '$correo',
+                    pw = '$contraseña',
+                    descripcion = '$descripcion'
+                    $foto_query
+                  WHERE pk_usuario = '$idusuario'";
+        
+        $result = mysqli_query($this->conn, $query);
+        return $result ? "Usuario actualizado exitosamente." : "Error al actualizar el usuario.";
+    }
+}
+    ?>
