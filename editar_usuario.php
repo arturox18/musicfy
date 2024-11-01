@@ -37,7 +37,7 @@ $datos = mysqli_fetch_assoc($datos_usuario);
 
         <input value="<?= $datos["pk_usuario"] ?>" type="hidden" name="pk_usuario">
         
-        <input type="submit" value="Guardar">
+        <input type="submit" value="Guardar" href="panel_usuario.php">
     </form>
     </div>
 </body>
