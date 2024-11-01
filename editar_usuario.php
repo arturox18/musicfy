@@ -17,6 +17,7 @@ $datos = mysqli_fetch_assoc($datos_usuario);
     <link rel="stylesheet" href="diseño.css">
 </head>
 <body>
+    <div class="login-container"> 
     <h3>Editar Usuario</h3>
     <form action="actualizar_usuario.php" method="post" enctype="multipart/form-data">
         <label>Nombre de Usuario:</label><br>
@@ -38,5 +39,6 @@ $datos = mysqli_fetch_assoc($datos_usuario);
         
         <input type="submit" value="Guardar">
     </form>
+    </div>
 </body>
 </html>
