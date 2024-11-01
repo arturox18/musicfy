@@ -1,4 +1,5 @@
 <?php 
+include 'conexion.php'; 
 class usuario
 {
     function __construct()
