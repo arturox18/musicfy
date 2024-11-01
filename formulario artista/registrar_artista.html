@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="diseño.css">
+    <title>Registro de Artistas</title>
+</head>
+<body>
+    <div class="login-container">
+
+        <h2>Registrar Artista</h2>
+        <form action="registrar_artista.php" method="POST">
+            
+            <label for="bibliografia">Bibliografía:</label>
+            <textarea id="bibliografia" name="bibliografia" rows="4" cols="50" required></textarea>
+            <br><br>
+           
+            <label for="genero">Género Musical:</label>
+            <input type="text" id="genero" name="genero" required>
+            <br><br>
+            
+            <label for="pais">País de Origen:</label>
+            <input type="text" id="pais" name="pais" required>
+            <br><br>
+          
+            <input type="hidden" id="fk_usuario" name="fk_usuario" value="ID_USUARIO">
+    
+            <button type="submit">Registrar Artista</button>
+        </form>
+
+    </div>
+ 
+</body>
+</html>
