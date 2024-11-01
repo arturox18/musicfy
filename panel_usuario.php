@@ -1,21 +1,45 @@
+<?php
+session_start();
+include("clase_usuario.php");
 
-<link rel="stylesheet" href="diseño.css">
+$usuario = new usuario();
+$idusuario = $_SESSION['pk_usuario']; // Asegúrate de que el ID del usuario esté en la sesión
 
-<div class="login-container">
-  <h2>Perfil de usuario</h2>
-  
-  <div class="profile-photo">
-    <img src="ruta-de-foto-actual.jpg" alt="Foto de perfil" class="profile-image">
-    <button onclick="changePhoto()">Cambiar foto</button>
-  </div>
+// Obtén los datos del usuario.
+$user_data = $usuario->obtener_usuario($idusuario); // Llama al método que agregaste
 
-  <div class="profile-info">
-    <label for="username">Nombre</label>
-    <input type="text" id="username" value="NombreActual">
-  </div>
+// Verifica que los datos del usuario estén disponibles
+if ($user_data) {
+    $nombre_usuario = $user_data['nom_usuario']; // Cambia esto según tus columnas
+    $correo = $user_data['correo'];
+    $descripcion = $user_data['descripcion'];
+    $foto = $user_data['foto']; // Nombre de la foto
+} else {
+    // Manejo de errores si no se encuentra al usuario
+    die("Error: Usuario no encontrado.");
+}
+?>
 
-  <div class="action-buttons">
-    <button onclick="saveChanges()">Guardar cambios</button>
-    <button onclick="cancelChanges()">Cancelar</button>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Usuario</title>
+    <link rel="stylesheet" href="diseño.css"> <!-- Agrega tu CSS aquí -->
+</head>
+<body>
+    <div class="panel">
+        <h2>Perfil de Usuario</h2>
+        <div class="perfil">
+            <img src="imagenes/<?= htmlspecialchars($foto) ?>" alt="Foto de perfil" class="foto-perfil">
+            <h3><?= htmlspecialchars($nombre_usuario) ?></h3>
+            <p><strong>Correo:</strong> <?= htmlspecialchars($correo) ?></p>
+            <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($descripcion)) ?></p>
+            <form action="editar_usuario.php" method="get">
+                <input type="hidden" name="pk_usuario" value="<?= htmlspecialchars($idusuario) ?>">
+                <input type="submit" value="Editar Información" class="boton-editar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
