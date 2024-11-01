@@ -8,6 +8,7 @@ include("clase_usuario.php");
 $usuario = new Usuario();
 $datos_usuario = $usuario->buscar($pk_usuario);
 $datos = mysqli_fetch_assoc($datos_usuario);
+
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +39,7 @@ $datos = mysqli_fetch_assoc($datos_usuario);
         <input value="<?= $datos["pk_usuario"] ?>" type="hidden" name="pk_usuario">
         
         <input type="submit" value="Guardar" href="panel_usuario.php">
+        <a href="panel_usuario.php?pk_usuario=<?= $datos["pk_usuario"]?>">Cancelar</a>
     </form>
     </div>
 </body>
