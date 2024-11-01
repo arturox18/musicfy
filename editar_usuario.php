@@ -14,6 +14,7 @@ $datos = mysqli_fetch_assoc($datos_usuario);
 <html lang="en">
 <head>
     <title>Editar Usuario</title>
+    <link rel="stylesheet" href="diseño.css">
 </head>
 <body>
     <h3>Editar Usuario</h3>

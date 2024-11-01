@@ -13,7 +13,7 @@ $foto = $_FILES['foto']['name']; // Si estás subiendo una foto
 // Lógica para subir la foto
 if (!empty($foto)) {
     // Mover la foto a la carpeta deseada
-    move_uploaded_file($_FILES['foto']['tmp_name'], "fotos/$foto");
+    move_uploaded_file($_FILES['foto']['tmp_name'], "imagenes/$foto");
 }
 
 $respuesta = $usuario->actualizar($nombre_usuario, $correo, $contraseña, $descripcion, $idusuario, $foto);
