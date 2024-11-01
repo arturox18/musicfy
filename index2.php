@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['pk_usuario'])) {
+    // Si no hay sesión iniciada, redirige a la página de inicio de sesión
+    header("Location: login.php");
+    exit();
+}
+
+$id_usuario = $_SESSION['pk_usuario']; // Obtener el ID de usuario desde la sesión
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
