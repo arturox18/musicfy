@@ -1,4 +1,5 @@
-<?php
+
+<?php //NO TOCAR
 session_start();
 if (!isset($_SESSION['pk_usuario'])) {
     // Si no hay sesión iniciada, redirige a la página de inicio de sesión
@@ -6,7 +7,7 @@ if (!isset($_SESSION['pk_usuario'])) {
     exit();
 }
 
-$id_usuario = $_SESSION['pk_usuario']; // Obtener el ID de usuario desde la sesión
+$id_usuario = $_SESSION['pk_usuario']; // Obtener el ID de usuario desde la sesión NO TOCARRRRRRRRRR
 ?>
 <!DOCTYPE html>
 <html lang="es">
