@@ -25,7 +25,7 @@ if ($user_data) {
 <head>
     <meta charset="UTF-8">
     <title>Panel de Usuario</title>
-    <link rel="stylesheet" href="diseño.css"> <!-- Agrega tu CSS aquí -->
+    <link rel="stylesheet" href="diseño_panel.css"> <!-- Agrega tu CSS aquí -->
 </head>
 <body>
     <div class="panel">
