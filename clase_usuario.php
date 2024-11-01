@@ -11,6 +11,11 @@ class usuario {
         return $conn->query($sql);
     }
 
+    public function obtener_usuario($pk_usuario) {
+        global $conn; // Usar la conexión globalmente
+        $sql = "SELECT * FROM usuario WHERE pk_usuario = $pk_usuario";
+        return $conn->query($sql)->fetch_assoc(); // Obtener solo una fila
+    }
     public function actualizar($nombre_usuario, $correo, $contraseña, $descripcion, $idusuario, $foto) {
         global $conn; // Usar la conexión globalmente
         
