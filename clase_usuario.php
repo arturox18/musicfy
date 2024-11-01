@@ -1,5 +1,7 @@
 <?php 
+echo "Buscando el archivo conexion.php...<br>";
 include 'conexion.php'; // Asegúrate de que esta línea está al inicio del archivo
+echo "Archivo conexion.php incluido con éxito.<br>";
 if (!class_exists('conexion')) {
     die("La clase 'conexion' no se pudo encontrar.");
 }
