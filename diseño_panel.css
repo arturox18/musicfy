@@ -37,15 +37,33 @@ body {
 }
 
 .boton-editar {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #880ECE;
+    background-color: #7c1ec3;
     color: white;
     border: none;
-    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
+    width: 40%;
+    display: inline-block;
 }
 
 .boton-editar:hover {
     background-color: #690093;
+}
+ .boton-volver{
+    background-color: #7c1ec3;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 40%;
+    display: inline-block;
+    
+}
+
+button:hover {
+    background-color: #4f0e64;
 }

@@ -28,7 +28,8 @@ if ($user_data) {
     <link rel="stylesheet" href="diseño_panel.css"> <!-- Agrega tu CSS aquí -->
 </head>
 <body>
-    <div class="panel">
+    <div class="panel"> 
+
         <h2>Perfil de Usuario</h2>
         <div class="perfil">
             <img src="imagenes/<?= htmlspecialchars($foto) ?>" alt="Foto de perfil" class="foto-perfil">
@@ -37,7 +38,8 @@ if ($user_data) {
             <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($descripcion)) ?></p>
             <form action="editar_usuario.php" method="get">
                 <input type="hidden" name="pk_usuario" value="<?= htmlspecialchars($idusuario) ?>">
-                <input type="submit" value="Editar Información" class="boton-editar">
+                <a href="index2.php" class="boton-volver">volver</a> 
+                <input type="submit" value="Editar" class="boton-editar">
             </form>
         </div>
     </div>

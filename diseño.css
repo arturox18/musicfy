@@ -70,3 +70,16 @@ button {
 button:hover {
     background-color: #4f0e64;
 }
+
+.boton-cancelar  {
+    background-color: #7c1ec3;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 40%;
+    display: inline-block;
+    
+}
