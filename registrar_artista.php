@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ejecuta la consulta y verifica si fue exitosa
     if (mysqli_query($conn, $sql)) {
         echo "Artista registrado exitosamente.";
+        header("Location: index2.php");
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
