@@ -90,6 +90,7 @@ if (isset($_SESSION['pk_usuario'])) {
             </div>
 
             <button type="submit">Subir Canción</button>
+            <a href="index2.php"><button type="button" style="margin-top: 10px;">Cancelar</button></a>
         </form>
     </div>
 </body>
