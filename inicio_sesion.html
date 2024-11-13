@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Inicia sesión</h2>
+        <form method="post" action="validar_login.php">
+            <label for="nom_usuario">Nombre de usuario:</label>
+            <input type="text" id="nom_usuario" name="nom_usuario" required>
+            
+            <label for="pw">Contraseña:</label>
+            <input type="password" id="pw" name="pw" required>
+            
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <br>
+        <p>¿No tienes una cuenta? <a href="formulario_usuario.html">Registrarse</a></p>
+    </div>
+</body>
+</html>
