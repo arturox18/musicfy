@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Álbum</title>
+    <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Crear Nuevo Álbum</h2>
+        <form action="crear_album.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="titulo">Título del Álbum:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Título del álbum" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha de Lanzamiento:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="caratula">Carátula:</label>
+                <input type="file" id="caratula" name="caratula" accept="image/*" required>
+            </div>
+
+            <!-- Campo oculto para el ID del usuario -->
+            <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['pk_usuario']; ?>">
+
+            <button type="submit">Crear Álbum</button>
+            <a href="index_pro.php"><button type="button" style="margin-top: 10px;">Cancelar</button></a>
+        </form>
+    </div>
+</body>
+</html>

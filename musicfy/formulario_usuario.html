@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="diseño.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Registra una cuenta</h2>
+        <form action="formulario_usuario.php" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <label for="apaterno">Apellido paterno:</label>
+            <input type="text" id="apaterno" name="apaterno" required><br>
+
+            <label for="amaterno">Apellido materno:</label>
+            <input type="text" id="amaterno" name="amaterno"><br>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="">Seleccione...</option>
+                <option value="m">Masculino</option>
+                <option value="f">Femenino</option>
+            </select><br>
+            
+            <label for="nom_usuario">Nombre de usuario:</label>
+            <input type="text" id="nom_usuario" name="nom_usuario" required><br>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required><br>
+
+            <label for="pw">Contraseña:</label>
+            <input type="password" id="pw" name="pw" required><br>
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+</body>
+
+</html>
