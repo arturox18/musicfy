@@ -1,20 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Canciones Mezcladas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .cancion-boton {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .cancion-boton:hover {
+            background-color: #e0e0e0;
+        }
+        #audio-player {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Minijuego: Adivina la Canción</h1>
-    <p>Escucha la canción y trata de adivinar el título.</p>
-    <audio id="audio-player" controls></audio> <!-- Reproductor de audio -->
-    <input type="text" id="guess" placeholder="Escribe el nombre de la canción aquí">
-    <button onclick="checkAnswer()">Adivinar</button>
-    <div id="feedback" class="feedback"></div>
+    <h1>Selecciona una Canción</h1>
+    <h4 id="puntos"></h4>
+    <div id="botones-canciones"></div>
+    <div id="audio-player"></div> <!-- Aquí se mostrará el reproductor de audio -->
 
-    <!-- Conectar el archivo JavaScript -->
-    <script src="juego.js"></script>
+    <script>
+        let puntos = localStorage.getItem('puntos') || 0;
+                            
+                            document.getElementById('puntos').textContent = `Puntos actuales: ${puntos}`;
+
+
+        // Función para obtener las canciones mezcladas con información sobre su veracidad y audio
+        async function obtenerCanciones() {
+            try {
+                // Hacer la solicitud al archivo PHP
+                const response = await fetch('opciones.php');
+                const data = await response.json();
+
+                if (data.error) {
+                    console.error(data.error);
+                    return;
+                }
+
+                const contenedor = document.getElementById('botones-canciones');
+                const playerContenedor = document.getElementById('audio-player');
+
+                // Limpiar el contenedor de botones antes de agregar nuevos
+                contenedor.innerHTML = '';
+                playerContenedor.innerHTML = ''; // Limpiar el reproductor antes de agregar uno nuevo
+
+                // Crear un botón para cada canción
+                data.forEach(cancion => {
+                    const boton = document.createElement('button');
+                    boton.classList.add('cancion-boton');
+                    boton.textContent = cancion.nombre;
+                    boton.addEventListener('click', () => {
+                       // alert(`Seleccionaste: ${cancion.nombre}\nTipo: ${cancion.tipo}`);
+                        if (cancion.tipo === "verdadera") {
+                            let puntos = localStorage.getItem('puntos') || 0;
+                            puntos = parseInt(puntos) + 1;
+                            localStorage.setItem('puntos', puntos);
+                            document.getElementById('puntos').textContent = `Puntos actuales: ${puntos}`;
+                            alert(`¡Correcto! La cancion es "${cancion.nombre}".`);
+                        } else {
+                            localStorage.setItem('puntos', 0);
+                            document.getElementById('puntos').textContent = "Puntos actuales: 0";
+                            alert("Incorrecto, vuelve a empezar.");
+                        }
+                        location.reload();
+                    });
+                    contenedor.appendChild(boton);
+
+                    // Si la canción es verdadera, mostrar el reproductor de audio
+                    if (cancion.tipo === "verdadera") {
+                        const audio = document.createElement('audio');
+                        audio.controls = true;
+                        audio.src = cancion.audio; // La URL del audio de la canción
+                        playerContenedor.appendChild(audio); // Agregar el reproductor al DOM
+                    }
+                });
+            } catch (error) {
+                console.error('Error al obtener las canciones:', error);
+            }
+        }
+
+        // Cargar las canciones al inicio
+        obtenerCanciones();
+    </script>
 </body>
-
-</html>l
+</html>
