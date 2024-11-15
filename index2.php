@@ -159,7 +159,7 @@ $resultado_artista = $conexion->query($sql_artista);
         <div class="busqueda">
             <input type="text" placeholder="Buscar...">
         </div>
-        <a href="#" class="minijuego">Minijuego</a>
+        <a href="juego.html" class="minijuego">Minijuego</a>
         <a href="inicio_sesion.html" class="cerrar-sesion">Cerrar Sesión</a>
     </div>
 
