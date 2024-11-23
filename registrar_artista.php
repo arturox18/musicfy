@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ejecuta la consulta y verifica si fue exitosa
     if (mysqli_query($conn, $sql)) {
         echo "Artista registrado exitosamente.";
-        header("Location: index2.php"); // Redirige a otra página si el registro es exitoso
+        header("Location: index_pro.php"); // Redirige a otra página si el registro es exitoso
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn); // Muestra el error si hay un problema
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <!-- Cambiar tipo de botón a submit -->
             <button type="submit">Registrar Artista</button>
-            <a href="index2.php"><button type="button" style="margin-top: 10px;">Cancelar</button></a>
+            <a href="index_pro.php"><button type="button" style="margin-top: 10px;">Cancelar</button></a>
 
         </form>
 

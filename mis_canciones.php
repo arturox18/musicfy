@@ -6,7 +6,7 @@ if (!isset($_SESSION['pk_usuario'])) {
     exit();
 }
 
-$pk_usuario = $_SESSION['pk_usuario']; 
+$pk_usuario = $_SESSION['pk_usuario'];
 
 // Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "musica");
@@ -35,14 +35,16 @@ $resultado = $stmt->get_result();
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Canciones</title>
+    <link rel="stylesheet" href="css/diseno_index.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #880ECE;
+            background-color: #1b1b1b;
             margin: 0;
             padding: 0;
             display: flex;
@@ -50,6 +52,7 @@ $resultado = $stmt->get_result();
             flex-direction: column;
         }
 
+        /* Barra de navegación */
         .navbar {
             width: 100%;
             background-color: #333;
@@ -63,9 +66,45 @@ $resultado = $stmt->get_result();
             z-index: 1;
         }
 
+        .navbar .icono {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #555;
+            margin-right: 20px;
+        }
+
+        .navbar .busqueda {
+            flex: 1;
+            margin: 0 60px;
+        }
+
+        .navbar .busqueda input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .navbar .minijuego,
+        .navbar .cerrar-sesion {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #880ECE;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .navbar .minijuego:hover,
+        .navbar .cerrar-sesion:hover {
+            background-color: #CE3AFF;
+        }
+
+        /* Barra lateral */
         .sidebar {
             width: 250px;
-            background-color: #333333;
+            background-color: #a810ad;
             color: white;
             height: 100vh;
             position: fixed;
@@ -88,94 +127,118 @@ $resultado = $stmt->get_result();
             transition: 0.3s;
         }
 
+        /* Contenido */
         .content {
             margin-left: 250px;
             padding: 70px 20px 20px;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
         }
 
-        .content button {
+        .content h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Grid de canciones */
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .album {
             background-color: #333333;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .content button:hover {
-            background-color: #CE3AFF;
-        }
-
-        .cancion-card {
-            background-color: #fff;
-            color: #333;
+            border-radius: 10px;
             padding: 15px;
-            margin: 10px;
-            border-radius: 8px;
             width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .cancion-card img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
+        .album:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .album img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .album-info {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #F2F3FF;
+            font-weight: 600;
+        }
+
+        .album-info span {
+            display: block;
+            font-size: 14px;
+            color: #777;
+            font-weight: 400;
+            margin-top: 5px;
         }
     </style>
 </head>
+
 <body>
 
+    <!-- Barra de navegación -->
     <div class="navbar">
-        <a href="panel_usuario.php?pk_usuario=<?= $pk_usuario ?>">Usuario</a>
-        <a href="inicio_sesion.html" class="cerrar-sesion">Cerrar Sesión</a>
+        <button id="toggle-sidebar" class="toggle-button">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="navbar-left">
+            <a href="index.html">
+                <img src="./imagenes/logo.png" alt="Logo" class="logo">
+            </a>
+            <h1>Mis Canciones</h1>
+        </div>
+        <a href="index_pro.php" class="cerrar-sesion">Volver</a>
     </div>
 
+    <!-- Barra lateral -->
     <div class="sidebar">
-        <h2>Canciones</h2>
-        <a href="mis_canciones.php">Mis Canciones</a>
-        <a href="mis_albums.php">Mis Álbumes</a>
+        <h2>Opciones</h2>
+        <a href="formulario_subir_canciones.php?pk_usuario=<?= $pk_usuario ?>" class="sidebar-link">Subir Canción</a>
+        <a href="mis_albums2.php?pk_usuario=<?= $pk_usuario ?>" class="sidebar-link">Mis albunes </a>
     </div>
 
+    <!-- Contenido principal con las canciones del usuario -->
     <div class="content">
-        <h1>Mis Canciones</h1>
-        
-        <?php
-        // Verificar si hay canciones para mostrar
-        if ($resultado->num_rows > 0) {
-            // Generar un bloque para cada canción
-            while ($fila = $resultado->fetch_assoc()) {
-                echo "<div class='cancion-card'>";
-                echo "<h3>" . htmlspecialchars($fila['nombre_cancion']) . "</h3>";
-                echo "<p><strong>Álbum:</strong> " . htmlspecialchars($fila['album_titulo']) . "</p>";
-                
-                // Verificar si hay una carátula y mostrarla
-                if (!empty($fila['album_car'])) {
-                    echo "<img src='path/to/caratulas/" . htmlspecialchars($fila['album_car']) . "' alt='Carátula del álbum'>";
+        <div class="album-grid">
+            <?php
+            // Verificar si hay canciones
+            if ($resultado->num_rows > 0) {
+                while ($cancion = $resultado->fetch_assoc()) {
+                    echo '<div class="album">';
+                    echo '<img src="imagenes/' . htmlspecialchars($cancion['album_car']) . '" alt="Carátula del álbum">';
+                    echo '<div class="album-info">';
+                    echo '<p>' . htmlspecialchars($cancion['nombre_cancion']) . '</p>';
+                    echo '<span>' . htmlspecialchars($cancion['album_titulo']) . '</span>';
+                    echo '</div>';
+                    echo '</div>';
                 }
-                
-                echo "<button onclick=\"window.location.href='reproductor.php?cancion=" . urlencode($fila['cancion']) . "&pk_usuario=" . $pk_usuario . "'\">" .  "</button>";
-
-                echo "</div>";
+            } else {
+                echo "<p>No tienes canciones.</p>";
             }
-        } else {
-            echo "<p>No tienes canciones disponibles.</p>";
-        }
 
-        // Liberar el resultado y cerrar conexión
-        $resultado->free();
-        $conexion->close();
-        ?>
-
+            // Liberar el resultado y cerrar conexión
+            $resultado->free();
+            $conexion->close();
+            ?>
+        </div>
     </div>
+
+    
+    <script src="script.js"></script>
 
 </body>
+
 </html>

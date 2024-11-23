@@ -37,14 +37,16 @@ if (isset($_SESSION['pk_usuario'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo_subir_canciones.css">
+    <link rel="stylesheet" href="css/diseño.css">
     <title>SUBIR CANCIONES</title>
 </head>
+
 <body>
-    <div class="contenedor">
+    <div class="login-container">
         <h2>SUBIR CANCIONES</h2>
 
         <form action="subir_canciones.php" method="POST" enctype="multipart/form-data">
@@ -53,17 +55,17 @@ if (isset($_SESSION['pk_usuario'])) {
                 <input type="text" name="nombre" placeholder="Nombre" required>
             </div>
 
-            <div class="botom">
+            <div class="butom">
                 <label for="genero">Género Musical</label>
                 <input type="text" name="genero" placeholder="Género" required>
             </div>
-            
-            <div class="botom">
+
+            <div class="button">
                 <label for="duracion">Duración</label>
                 <input type="text" name="duracion" placeholder="Duración (min)" required>
             </div>
 
-            <div class="botom">
+            <div class="select">
                 <label for="albumes">Selecciona un álbum:</label>
                 <select name="album" id="albumes" required>
                     <?php
@@ -84,14 +86,15 @@ if (isset($_SESSION['pk_usuario'])) {
                 </select>
             </div>
 
-            <div class="botom">
+            <div class="button">
                 <label for="audio">Canción</label>
                 <input type="file" name="audio" accept="audio/*" required>
             </div>
 
             <button type="submit">Subir Canción</button>
-            <a href="index2.php"><button type="button" style="margin-top: 10px;">Cancelar</button></a>
+            <a href="index_pro.php"><button type="button" style="margin-top: 10px;">Cancelar</button></a>
         </form>
     </div>
 </body>
+
 </html>

@@ -26,48 +26,114 @@ $conexion->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reproductor de Música</title>
   <style>
-    /* Estilos del reproductor */
+    /* Estilo del cuerpo */
     body {
       display: flex;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
-      background-color: #1a001f;
-      color: #f3e5ff;
-      font-family: Arial, sans-serif;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #121212, #282828);
+      color: #fff;
+      font-family: 'Arial', sans-serif;
     }
+
+    /* Contenedor del reproductor */
     .player {
-      width: 320px;
-      padding: 20px;
-      background: #3d0066;
-      border-radius: 15px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+      width: 400px;
+      background: #181818;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
       text-align: center;
+      padding: 20px;
+      overflow: hidden;
     }
+
+    /* Carátula del álbum */
+    .cover {
+      width: 100%;
+      height: 300px;
+      background: url('uploads/cover_placeholder.jpg') center center / cover no-repeat;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* Información de la canción */
+    .song-info {
+      margin-bottom: 15px;
+    }
+
+    .song-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .song-artist {
+      font-size: 0.9em;
+      color: #b3b3b3;
+    }
+
+    /* Barra de progreso */
     .progress-bar {
       width: 100%;
-      background: #5c2a7a;
-      border-radius: 10px;
+      height: 8px;
+      background: #404040;
+      border-radius: 5px;
       overflow: hidden;
-      height: 12px;
+      position: relative;
       margin: 15px 0;
     }
+
     .progress {
-      height: 100%;
       width: 0%;
-      background: #e170ff;
+      height: 100%;
+      background: #1db954;
+      border-radius: 5px;
       transition: width 0.2s;
     }
-    button {
+
+    /* Controles */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .controls button {
       background: none;
       border: none;
-      color: #e170ff;
+      color: #fff;
       font-size: 1.8em;
       cursor: pointer;
-      transition: color 0.3s;
+      transition: transform 0.3s, color 0.3s;
     }
-    button:hover {
-      color: #ffaffd;
+
+    .controls button:hover {
+      color: #1db954;
+      transform: scale(1.2);
+    }
+
+    /* Botón de regreso */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 0.9em;
+      color: #fff;
+      background: #1db954;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-back:hover {
+      background: #1ed760;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -83,6 +149,8 @@ $conexion->close();
       <button onclick="restartSong()">🔄</button>
     </div>
     <audio id="audio" src="uploads/<?php echo htmlspecialchars($rutaCancion); ?>"></audio>
+
+    <a href="index_pro.php" class="btn-back">Regresar al Inicio</a>
   </div>
 
   <script>

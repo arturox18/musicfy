@@ -1,0 +1,328 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b1b;
+    color: #f3f3f3;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.logo{
+    border-radius: 100px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    margin-left: 50px; /* Desplaza todo el contenido de la izquierda hacia la derecha */
+}
+
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.username {
+    color: #CE3AFF;
+    margin-right: 15px;
+}
+
+.search-form {
+    display: flex; /* Alinear elementos en una fila */
+    justify-content: center; /* Centrar el formulario */
+    align-items: center; /* Centrar verticalmente */
+    gap: 6px; /* Espacio entre el input y el botón */
+    margin: 15px 0; /* Espaciado superior e inferior */
+}
+
+.search-input {
+    flex: 1; /* Ajustar al espacio disponible */
+    width: 200px; /* Ancho fijo más pequeño */
+    padding: 6px 10px; /* Espaciado interno compacto */
+    font-size: 14px; /* Texto más pequeño */
+    border: 1px solid #d3bce7; /* Borde morado claro */
+    border-radius: 20px; /* Bordes redondeados */
+    outline: none; /* Eliminar borde al enfocar */
+    transition: all 0.3s ease; /* Transiciones suaves */
+    background-color: #f7f0fc; /* Fondo morado claro */
+}
+
+.search-input:focus {
+    border-color: #a065d1; /* Morado más oscuro al enfocar */
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 0 0 6px rgba(160, 101, 209, 0.5); /* Sombra en morado */
+}
+
+.search-button {
+    padding: 6px 12px; /* Espaciado interno compacto */
+    font-size: 14px; /* Texto más pequeño */
+    color: #fff; /* Texto blanco */
+    background-color: #a065d1; /* Fondo morado */
+    border: none; /* Sin borde */
+    border-radius: 20px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    transition: all 0.3s ease; /* Transiciones suaves */
+}
+
+.search-button:hover {
+    background-color: #7a42a3; /* Fondo morado más oscuro al hover */
+    box-shadow: 0 3px 6px rgba(122, 66, 163, 0.3); /* Sombra sutil al hover */
+}
+
+
+/* navbar link */
+
+.nav-link {
+    color: #ffffff; /* Blanco para el texto */
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 15px; /* Espacio entre los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Estilo al pasar el ratón (hover) */
+.nav-link:hover {
+    color: #8a2be2; /* Morado para el texto al pasar el ratón */
+    border-bottom: 2px solid #8a2be2; /* Subrayado de color morado */
+}
+
+/* Estilo para el enlace del nombre de usuario */
+.navbar-left .username {
+    font-size: 16px;
+    font-weight: normal;
+    color: #ffffff;
+    margin-right: 20px; /* Espacio antes de la barra de búsqueda */
+}
+
+
+/* Contenido */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.content button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.content button:hover {
+    background-color: #CE3AFF;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 250px;
+    background-color: #a810ad; /* Color morado oscuro */
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 70px; /* Ajuste para que se posicione justo debajo del navbar */
+    left: 0;
+    height: calc(100vh - 70px); /* Ajustar altura para que ocupe todo el espacio restante */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Barra lateral oculta */
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Estilo para los títulos de la barra lateral */
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Estilo de los enlaces de la barra lateral */
+.sidebar-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Efecto hover en los enlaces barra lateral */
+.sidebar-link:hover {
+    background-color: #8c00a8; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05); /* Efecto de ampliación suave */
+}
+
+
+/* Barra lateral */
+.sidebar {
+    width: 250px;
+    background-color: #a810ad;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Botón para mostrar/ocultar la barra lateral */
+.toggle-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #a810ad;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.toggle-button:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+/* Estilos para la sección de canciones */
+.song-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    margin-left: 50px;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.song-card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.album-cover {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.song-title {
+    font-size: 18px;
+    color: #ffffff;
+    margin: 5px 0;
+}
+
+.song-title a {
+    text-decoration: none;
+    color: #a4a4ff;
+}
+
+.song-title a:hover {
+    color: #fff;
+}
+
+.artist-name {
+    font-size: 14px;
+    color: #ccc;
+    margin: 5px 0;
+}
+
+.artist-name a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.artist-name a:hover {
+    color: #fff;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .song-item {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .album-cover {
+        margin-bottom: 15px;
+    }
+    
+    .song-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+
+    /* Diseño de boton de reproducir */
+   
+      
+}

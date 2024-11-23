@@ -8,35 +8,37 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Verifica si el formulario fue enviado
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtén los valores del formulario
+    
     $nombre = $_POST['nombre'];
     $genero = $_POST['genero'];
     $duracion = $_POST['duracion'];
-    $album = $_POST['album']; // Aquí estamos obteniendo el ID del álbum seleccionado
+    $album = $_POST['album']; 
 
-    // Configuración para el archivo de audio
+   
     $archivo = $_FILES['audio']['tmp_name'];
     $nombreArchivo = $_FILES['audio']['name'];
     $rutaDestino = "uploads/" . basename($nombreArchivo);
 
-    // Array de tipos de archivos permitidos
+   
     $tiposPermitidos = ['audio/mpeg', 'audio/wav', 'audio/ogg'];
     $tamanoMaximo = 5 * 1024 * 1024 * 1024; // 5 GB
 
-    // Verifica el tipo y tamaño de archivo
+    
     if (in_array($_FILES['audio']['type'], $tiposPermitidos) && $_FILES['audio']['size'] <= $tamanoMaximo) {
-        // Verifica si el archivo fue subido exitosamente
+        
         if (move_uploaded_file($archivo, $rutaDestino)) {
-            // Inserta los datos en la base de datos, relacionando la canción con el álbum
+           
             $sql = "INSERT INTO cancion (nombre, genero, duracion, cancion, fk_album) 
                     VALUES (?, ?, ?, ?, ?)";
             $stmt = $conexion->prepare($sql);
             $stmt->bind_param("ssssi", $nombre, $genero, $duracion, $nombreArchivo, $album);
 
             if ($stmt->execute()) {
-                echo "Canción subida exitosamente.";
+                
+                header("Location: index_pro.php");
+                exit(); 
             } else {
                 echo "Error al guardar en la base de datos: " . $conexion->error;
             }

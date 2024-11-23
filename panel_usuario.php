@@ -25,7 +25,7 @@ if ($user_data) {
 <head>
     <meta charset="UTF-8">
     <title>Panel de Usuario</title>
-    <link rel="stylesheet" href="diseño_panel.css"> <!-- Agrega tu CSS aquí -->
+    <link rel="stylesheet" href="css/diseño_panel.css"> 
 </head>
 <body>
     <div class="panel"> 
@@ -38,7 +38,7 @@ if ($user_data) {
             <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($descripcion)) ?></p>
             <form action="editar_usuario.php" method="get">
                 <input type="hidden" name="pk_usuario" value="<?= htmlspecialchars($idusuario) ?>">
-                <a href="index2.php" class="boton-volver">volver</a> 
+                <a href="index_pro.php" class="boton-volver">volver</a> 
                 <input type="submit" value="Editar" class="boton-editar">
             </form>
         </div>
